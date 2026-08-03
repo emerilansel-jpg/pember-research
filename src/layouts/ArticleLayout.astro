@@ -1,0 +1,79 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  author: string;
+  date: Date;
+  category: string;
+  featured_image?: string;
+  slug: string;
+  readingTime: number;
+}
+
+const { title, description, author, date, category, featured_image, slug, readingTime } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
+const isoDate = date.toISOString();
+const canonicalUrl = `https://pemberresearch.com/research/${slug}`;
+const ogImage = featured_image ? `https://pemberresearch.com${featured_image}` : `https://pemberresearch.com/images/og-default.jpg`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  author: { '@type': 'Person', name: author.split(',')[0].trim() },
+  datePublished: isoDate,
+  image: ogImage,
+  publisher: { '@type': 'Organization', name: 'Pember Research', url: 'https://pemberresearch.com' },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://pemberresearch.com' },
+    { '@type': 'ListItem', position: 2, name: 'Research', item: 'https://pemberresearch.com/research' },
+    { '@type': 'ListItem', position: 3, name: title },
+  ],
+};
+---
+
+<BaseLayout title={`${title} | Pember Research`} description={description} pageType="article" canonicalUrl={canonicalUrl} ogImage={ogImage}>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <article class="article-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb__sep" aria-hidden="true">›</span>
+      <a href="/research">Research</a>
+      <span class="breadcrumb__sep" aria-hidden="true">›</span>
+      <span aria-current="page">{title}</span>
+    </nav>
+
+    <span class="article-page__category">{category}</span>
+    <h1 class="article-page__title">{title}</h1>
+
+    <div class="article-page__meta">
+      <div class="article-page__meta-item"><strong>{author.split(',')[0].trim()}</strong></div>
+      <div class="article-page__meta-item"><time datetime={isoDate}>{formattedDate}</time></div>
+      <div class="article-page__meta-item"><span>{readingTime} min read</span></div>
+    </div>
+
+    {featured_image && (
+      <img class="article-page__featured-image" src={featured_image} alt={title} loading="eager" />
+    )}
+
+    <div class="article-body">
+      <slot />
+    </div>
+
+    <AuthorBox author={author} />
+  </article>
+</BaseLayout>

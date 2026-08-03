@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('research');
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Research & Analysis | Pember Research" description="Browse all independent research from Pember Research.">
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h1 class="section__title">Research &amp; Analysis</h1>
+      </div>
+      {posts.length > 0 ? (
+        <div class="article-grid">
+          {posts.map(post => (
+            <ArticleCard title={post.data.title} slug={post.id} category={post.data.category}
+              description={post.data.description} author={post.data.author} date={post.data.date}
+              featured_image={post.data.featured_image} />
+          ))}
+        </div>
+      ) : (
+        <p>No research articles published yet.</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>

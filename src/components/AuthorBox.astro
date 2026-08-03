@@ -1,0 +1,16 @@
+---
+interface Props { author: string }
+const { author } = Astro.props;
+const [authorName, authorTitle = 'Senior Research Analyst'] = author.split(',').map(s => s.trim());
+const initials = authorName.split(' ').map(n => n[0]).slice(0, 2).join('');
+---
+
+<aside class="author-box" aria-label="About the author">
+  <div class="author-box__avatar" aria-hidden="true">{initials}</div>
+  <div class="author-box__info">
+    <p class="author-box__label">Written by</p>
+    <p class="author-box__name">{authorName}</p>
+    <p class="author-box__title">{authorTitle}</p>
+    <p class="author-box__bio">{authorName} is a research analyst at Pember Research.</p>
+  </div>
+</aside>

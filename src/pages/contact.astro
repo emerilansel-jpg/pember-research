@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Contact | Pember Research" description="Get in touch with Pember Research.">
+  <section class="page-hero">
+    <div class="container">
+      <h1 style="color:#fff;">Contact Us</h1>
+      <p>We typically respond within 1 business day.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container" style="max-width:800px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
+        <div>
+          <h2>Send a Message</h2>
+          <form id="contact-form">
+            <label>First Name</label><input type="text" name="first_name" required style="width:100%;padding:0.65rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;" />
+            <label>Last Name</label><input type="text" name="last_name" required style="width:100%;padding:0.65rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;" />
+            <label>Email</label><input type="email" name="email" required style="width:100%;padding:0.65rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;" />
+            <label>Organisation</label><input type="text" name="organisation" style="width:100%;padding:0.65rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;" />
+            <label>Message</label><textarea name="message" rows="4" style="width:100%;padding:0.65rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;"></textarea>
+            <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true" />
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+          <p id="contact-msg" style="margin-top:0.75rem;font-size:0.9rem;"></p>
+        </div>
+        <div>
+          <h2>Direct Contact</h2>
+          <p><strong>Email:</strong><br/><a href="mailto:research@pemberresearch.com">research@pemberresearch.com</a></p>
+          <p><strong>Phone:</strong><br/>+1-212-555-0276</p>
+          <p><strong>Address:</strong><br/>250 Park Avenue, Suite 1500<br/>New York, NY 10177</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<script>
+document.getElementById('contact-form')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const fd = new FormData(form);
+  const msg = document.getElementById('contact-msg');
+  try {
+    const res = await fetch('https://research-api.n311311.workers.dev/api/form/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        site: 'pemberresearch.com',
+        name: fd.get('first_name') + ' ' + fd.get('last_name'),
+        email: fd.get('email'),
+        message: fd.get('message'),
+        organisation: fd.get('organisation'),
+        website: fd.get('website') || '',
+      }),
+    });
+    const data = await res.json();
+    if (data.success) { msg.textContent = 'Thank you — we\'ll be in touch shortly.'; msg.style.color = 'var(--accent)'; form.reset(); }
+    else { msg.textContent = data.error || 'Something went wrong.'; msg.style.color = '#B91C1C'; }
+  } catch { msg.textContent = 'Network error. Please try again.'; msg.style.color = '#B91C1C'; }
+});
+</script>

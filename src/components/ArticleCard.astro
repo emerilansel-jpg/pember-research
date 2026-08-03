@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  category: string;
+  description: string;
+  author: string;
+  date: Date;
+  featured_image?: string;
+}
+
+const { title, slug, category, description, author, date, featured_image } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
+const authorDisplay = author.split(',')[0].trim();
+---
+
+<article class="article-card">
+  <div class="article-card__image-wrap">
+    {featured_image ? (
+      <img class="article-card__image" src={featured_image} alt={title} loading="lazy" />
+    ) : (
+      <div class="article-card__image-placeholder" aria-hidden="true">📊</div>
+    )}
+  </div>
+  <div class="article-card__body">
+    <span class="article-card__category">{category}</span>
+    <h2 class="article-card__title"><a href={`/research/${slug}`}>{title}</a></h2>
+    <p class="article-card__excerpt">{description}</p>
+    <div class="article-card__meta">
+      <span>{authorDisplay}</span>
+      <time datetime={date.toISOString()}>{formattedDate}</time>
+    </div>
+  </div>
+</article>

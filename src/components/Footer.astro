@@ -1,0 +1,116 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__top">
+    <div class="container">
+      <div class="site-footer__cols">
+        <div class="site-footer__col">
+          <p class="site-footer__brand">PEMBER RESEARCH</p>
+          <p class="site-footer__tagline">Pember Research delivers independent market intelligence, sector analysis, and strategic research for institutional decision-makers.</p>
+        </div>
+        <div class="site-footer__col">
+          <p class="site-footer__heading">Research</p>
+          <ul>
+            <li><a href="/research">All Reports</a></li>
+            <li><a href="/insights">Insights</a></li>
+            <li><a href="/methodology">Methodology</a></li>
+            <li><a href="/coverage">Coverage Map</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <p class="site-footer__heading">Services</p>
+          <ul>
+            <li><a href="/services">Market Intelligence</a></li>
+            <li><a href="/services">Due Diligence</a></li>
+            <li><a href="/services">Custom Research</a></li>
+            <li><a href="/contact">Request a Brief</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <p class="site-footer__heading">Contact</p>
+          <p>250 Park Avenue, Suite 1500<br/>New York, NY 10177</p>
+          <p><a href="mailto:research@pemberresearch.com">research@pemberresearch.com</a></p>
+          <p>+1-212-555-0276</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="container">
+      <div class="site-footer__bottom-inner">
+        <p>&copy; {currentYear} Pember Research. All rights reserved.</p>
+        <nav>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/disclosures">Disclosures</a>
+          <a href="/cookies">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.8);
+    margin-top: 4rem;
+  }
+  .site-footer__top {
+    padding: 3.5rem 0 2.5rem;
+  }
+  .site-footer__cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+  }
+  .site-footer__brand {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+  .site-footer__tagline {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.75;
+  }
+  .site-footer__heading {
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+  .site-footer__col ul {
+    list-style: none;
+    line-height: 1.9;
+  }
+  .site-footer__col a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .site-footer__col a:hover { color: #fff; }
+  .site-footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding: 1.5rem 0;
+  }
+  .site-footer__bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.85rem;
+    opacity: 0.65;
+  }
+  .site-footer__bottom-inner nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .site-footer__bottom-inner a {
+    color: #fff;
+    text-decoration: none;
+  }
+</style>

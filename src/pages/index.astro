@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('research');
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 6);
+---
+
+<BaseLayout title="Pember Research — Intelligence that moves markets." description="Pember Research delivers independent market intelligence, sector analysis, and strategic research for institutional decision-makers." pageType="homepage">
+  <!-- Hero -->
+  <section class="page-hero" style="padding:6rem 0 4rem;">
+    <div class="container">
+      <div class="page-hero__tag">Independent Research</div>
+      <h1 style="color:#fff;max-width:700px;">Pember Research delivers independent market intelligence, sector analysis, and strategic research for institutional decision-makers.</h1>
+      <p style="margin-top:1rem;max-width:600px;">Rigorous market intelligence, sector analysis, and strategic research for institutional decision-makers.</p>
+      <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="/research" class="btn">Browse Research</a>
+        <a href="/contact" class="btn btn--outline" style="border-color:rgba(255,255,255,0.5);color:#fff;">Request a Brief</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Research -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Latest Research</h2>
+      </div>
+      {posts.length > 0 ? (
+        <div class="article-grid">
+          {posts.map(post => (
+            <ArticleCard title={post.data.title} slug={post.id} category={post.data.category}
+              description={post.data.description} author={post.data.author} date={post.data.date}
+              featured_image={post.data.featured_image} />
+          ))}
+        </div>
+      ) : (
+        <p style="color:var(--text-secondary);">No research articles published yet.</p>
+      )}
+      <div style="text-align:center;margin-top:2.5rem;">
+        <a href="/research" class="btn btn--navy">View All Research</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="section" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="section__header" style="text-align:center;">
+        <h2 class="section__title">Our Services</h2>
+        <p style="color:var(--text-secondary);max-width:600px;margin:0.5rem auto 0;">From market intelligence to custom research — we serve institutional decision-makers.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem;">
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+          <h3 style="font-size:1.1rem;margin-bottom:0.5rem;">Market Intelligence</h3>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">Vendor-neutral analysis and sector reports across key verticals.</p>
+        </div>
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+          <h3 style="font-size:1.1rem;margin-bottom:0.5rem;">Due Diligence</h3>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">Technical and commercial due diligence for M&A and investment decisions.</p>
+        </div>
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+          <h3 style="font-size:1.1rem;margin-bottom:0.5rem;">Custom Research</h3>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">Bespoke research programs tailored to your strategic questions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
