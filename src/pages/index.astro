@@ -7,25 +7,124 @@ const allPosts = await getCollection('research');
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 6);
 ---
 
-<BaseLayout title="Pember Research — Intelligence that moves markets." description="Pember Research delivers independent market intelligence, sector analysis, and strategic research for institutional decision-makers." pageType="homepage">
-  <!-- Hero -->
-  <section class="page-hero" style="padding:6rem 0 4rem;">
-    <div class="container">
-      <div class="page-hero__tag">Independent Research</div>
-      <h1 style="color:#fff;max-width:700px;">Pember Research delivers independent market intelligence, sector analysis, and strategic research for institutional decision-makers.</h1>
-      <p style="margin-top:1rem;max-width:600px;">Rigorous market intelligence, sector analysis, and strategic research for institutional decision-makers.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="/research" class="btn">Browse Research</a>
-        <a href="/contact" class="btn btn--outline" style="border-color:rgba(255,255,255,0.5);color:#fff;">Request a Brief</a>
+<BaseLayout title="Pember Research — Intelligence that moves markets." description="Independent research across logistics technology, procurement intelligence, trade finance, and supply chain risk — from nearshoring trends to autonomous freight." pageType="homepage">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero__orb hero__orb--1"></div>
+    <div class="hero__orb hero__orb--2"></div>
+    <div class="hero__orb hero__orb--3"></div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="hero__kicker"><span class="pulse-dot"></span> Supply Chain & Logistics Research &middot; Independent</span>
+        <h1 class="hero__title"><span class="gradient-text">Supply Chain</span> Intelligence for a Resilient World</h1>
+        <p class="hero__sub">Independent research across logistics technology, procurement intelligence, trade finance, and supply chain risk — from nearshoring trends to autonomous freight.</p>
+        <div class="hero__ctas">
+          <a href="/research" class="btn">Browse Research</a>
+          <a href="/contact" class="btn btn--outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Request a Brief</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Latest Research -->
+  <!-- ═══ SIGNAL BAR ═══ -->
+  <div class="signal-bar">
+    <div class="signal-bar__label"><span class="pulse-dot pulse-dot--green"></span> LIVE</div>
+    <div class="signal-bar__track">
+      <div class="signal-bar__content">
+        <span class="signal-bar__item">Global Freight Index: Drewry WCI at $3,842/FEU — up 18% from Q1 2026</span>
+        <span class="signal-bar__item">Nearshoring Investment: $47B committed to Mexico and Southeast Asia manufacturing in H1</span>
+        <span class="signal-bar__item">Autonomous Trucking: Level 4 deployments cover 12,000 miles of US interstate</span>
+        <span class="signal-bar__item">Supply Chain AI Market: $8.6B in 2026, demand forecasting fastest-growing segment</span>
+        <span class="signal-bar__item">Warehouse Automation: 34% of distribution centers now use robotics for pick-and-pack</span>
+        <span class="signal-bar__item">Trade Finance Gap: $2.1T unmet demand, blockchain platforms gaining traction</span>
+        <span class="signal-bar__item">Global Freight Index: Drewry WCI at $3,842/FEU — up 18% from Q1 2026</span>
+        <span class="signal-bar__item">Nearshoring Investment: $47B committed to Mexico and Southeast Asia manufacturing in H1</span>
+        <span class="signal-bar__item">Autonomous Trucking: Level 4 deployments cover 12,000 miles of US interstate</span>
+        <span class="signal-bar__item">Supply Chain AI Market: $8.6B in 2026, demand forecasting fastest-growing segment</span>
+        <span class="signal-bar__item">Warehouse Automation: 34% of distribution centers now use robotics for pick-and-pack</span>
+        <span class="signal-bar__item">Trade Finance Gap: $2.1T unmet demand, blockchain platforms gaining traction</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ STATS ═══ -->
+  <section class="section stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-card__num">290+</span>
+          <span class="stat-card__label">Supply Chain Reports</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__num">48</span>
+          <span class="stat-card__label">Trade Corridors</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__num">150+</span>
+          <span class="stat-card__label">Logistics Providers</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__num">94%</span>
+          <span class="stat-card__label">Forecast Accuracy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURED REPORT ═══ -->
+  <section class="section section--dark">
+    <div class="container report-spotlight">
+      <div class="report-spotlight__info">
+        <span class="report-spotlight__label">Featured Report</span>
+        <h2>Logistics Technology Platform Benchmark 2026</h2>
+        <p>Comprehensive evaluation of 26 logistics platforms across visibility, automation, carrier management, and predictive analytics.</p>
+        <div class="report-spotlight__meta">
+          <span>Research Team</span><span>48 pages</span><span>24 vendors scored</span><span>Jul 2026</span>
+        </div>
+        <a href="/research" class="btn">Read the Report</a>
+      </div>
+      <div class="report-spotlight__card">
+        <div class="report-mockup">
+          <span class="report-mockup__badge">Supply Chain & Logistics</span>
+          <h3 class="report-mockup__title">Logistics Technology Platform Benchmark 2026</h3>
+          <div class="report-mockup__divider"></div>
+          <div class="report-mockup__bars">
+            <div class="report-mockup__bar-row">
+              <span class="report-mockup__bar-label">Supply Chain Visibility</span>
+              <div class="report-mockup__bar-track"><div class="report-mockup__bar-fill" style="width:72%"></div></div>
+              <span class="report-mockup__bar-val">72%</span>
+            </div>
+            <div class="report-mockup__bar-row">
+              <span class="report-mockup__bar-label">Automation Capability</span>
+              <div class="report-mockup__bar-track"><div class="report-mockup__bar-fill" style="width:68%"></div></div>
+              <span class="report-mockup__bar-val">68%</span>
+            </div>
+            <div class="report-mockup__bar-row">
+              <span class="report-mockup__bar-label">Carrier Network</span>
+              <div class="report-mockup__bar-track"><div class="report-mockup__bar-fill" style="width:85%"></div></div>
+              <span class="report-mockup__bar-val">85%</span>
+            </div>
+            <div class="report-mockup__bar-row">
+              <span class="report-mockup__bar-label">Predictive Analytics</span>
+              <div class="report-mockup__bar-track"><div class="report-mockup__bar-fill" style="width:59%"></div></div>
+              <span class="report-mockup__bar-val">59%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LATEST RESEARCH ═══ -->
   <section class="section">
     <div class="container">
       <div class="section__header">
-        <h2 class="section__title">Latest Research</h2>
+        <div>
+          <span class="section__label">Latest Intelligence</span>
+          <h2>Recent Supply Chain & Logistics Research</h2>
+        </div>
+        <a href="/research" class="link-arrow">View all research &rarr;</a>
       </div>
       {posts.length > 0 ? (
         <div class="article-grid">
@@ -36,35 +135,96 @@ const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueO
           ))}
         </div>
       ) : (
-        <p style="color:var(--text-secondary);">No research articles published yet.</p>
+        <div class="insights-grid">
+          <article class="insight-card">
+            <span class="insight-card__tag">Market Report</span>
+            <h3>Nearshoring Economics: Mexico vs Vietnam vs India Manufacturing Cost Comparison</h3>
+            <span class="insight-card__meta">Jul 2026</span>
+          </article>
+          <article class="insight-card">
+            <span class="insight-card__tag">Analysis</span>
+            <h3>Autonomous Freight: Level 4 Trucking Deployment Map and ROI Analysis</h3>
+            <span class="insight-card__meta">Jun 2026</span>
+          </article>
+          <article class="insight-card">
+            <span class="insight-card__tag">Primer</span>
+            <h3>Supply Chain Visibility Platforms: Architecture and Integration Patterns</h3>
+            <span class="insight-card__meta">Jun 2026</span>
+          </article>
+          <article class="insight-card">
+            <span class="insight-card__tag">Report</span>
+            <h3>Warehouse Automation: AMR vs ASRS Technology Selection Framework</h3>
+            <span class="insight-card__meta">May 2026</span>
+          </article>
+          <article class="insight-card">
+            <span class="insight-card__tag">Benchmark</span>
+            <h3>Trade Finance Platforms: Digital LC and Supply Chain Finance Scorecard</h3>
+            <span class="insight-card__meta">May 2026</span>
+          </article>
+          <article class="insight-card">
+            <span class="insight-card__tag">Analysis</span>
+            <h3>Cold Chain Logistics: Temperature Monitoring and Compliance Technology</h3>
+            <span class="insight-card__meta">Apr 2026</span>
+          </article>
+        </div>
       )}
-      <div style="text-align:center;margin-top:2.5rem;">
-        <a href="/research" class="btn btn--navy">View All Research</a>
+    </div>
+  </section>
+
+  <!-- ═══ INSIGHTS FEED ═══ -->
+  <section class="section section--soft">
+    <div class="container">
+      <span class="section__label">Market Commentary</span>
+      <h2 style="margin-bottom:1.5rem;">Supply Chain & Logistics Insights Feed</h2>
+      <div class="feed-list">
+        <a href="/research" class="feed-item">
+          <span class="feed-item__tag">Market Report</span>
+          <span class="feed-item__title">Nearshoring Economics: Mexico vs Vietnam vs India Manufacturing Cost Comparison</span>
+          <span class="feed-item__date">Jul 2026</span>
+        </a>
+        <a href="/research" class="feed-item">
+          <span class="feed-item__tag">Analysis</span>
+          <span class="feed-item__title">Autonomous Freight: Level 4 Trucking Deployment Map and ROI Analysis</span>
+          <span class="feed-item__date">Jun 2026</span>
+        </a>
+        <a href="/research" class="feed-item">
+          <span class="feed-item__tag">Primer</span>
+          <span class="feed-item__title">Supply Chain Visibility Platforms: Architecture and Integration Patterns</span>
+          <span class="feed-item__date">Jun 2026</span>
+        </a>
+        <a href="/research" class="feed-item">
+          <span class="feed-item__tag">Report</span>
+          <span class="feed-item__title">Warehouse Automation: AMR vs ASRS Technology Selection Framework</span>
+          <span class="feed-item__date">May 2026</span>
+        </a>
+        <a href="/research" class="feed-item">
+          <span class="feed-item__tag">Benchmark</span>
+          <span class="feed-item__title">Trade Finance Platforms: Digital LC and Supply Chain Finance Scorecard</span>
+          <span class="feed-item__date">May 2026</span>
+        </a>
+        <a href="/research" class="feed-item">
+          <span class="feed-item__tag">Analysis</span>
+          <span class="feed-item__title">Cold Chain Logistics: Temperature Monitoring and Compliance Technology</span>
+          <span class="feed-item__date">Apr 2026</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Services Preview -->
-  <section class="section" style="background:var(--bg-soft);">
+  <!-- ═══ SERVICES ═══ -->
+  <section class="section">
     <div class="container">
       <div class="section__header" style="text-align:center;">
-        <h2 class="section__title">Our Services</h2>
-        <p style="color:var(--text-secondary);max-width:600px;margin:0.5rem auto 0;">From market intelligence to custom research — we serve institutional decision-makers.</p>
+        <span class="section__label">Our Services</span>
+        <h2>Intelligence That Moves Decisions</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem;">
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
-          <h3 style="font-size:1.1rem;margin-bottom:0.5rem;">Market Intelligence</h3>
-          <p style="color:var(--text-secondary);font-size:0.9rem;">Vendor-neutral analysis and sector reports across key verticals.</p>
-        </div>
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
-          <h3 style="font-size:1.1rem;margin-bottom:0.5rem;">Due Diligence</h3>
-          <p style="color:var(--text-secondary);font-size:0.9rem;">Technical and commercial due diligence for M&A and investment decisions.</p>
-        </div>
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
-          <h3 style="font-size:1.1rem;margin-bottom:0.5rem;">Custom Research</h3>
-          <p style="color:var(--text-secondary);font-size:0.9rem;">Bespoke research programs tailored to your strategic questions.</p>
-        </div>
+      <div class="services-grid">
+        <div class="service-card"><h3>Market Intelligence</h3><p>Comprehensive sector reports and competitive analysis.</p></div>
+        <div class="service-card"><h3>Due Diligence</h3><p>Technical and commercial assessment for M&A decisions.</p></div>
+        <div class="service-card"><h3>Custom Research</h3><p>Bespoke programs tailored to your strategic questions.</p></div>
+        <div class="service-card"><h3>Advisory Retainers</h3><p>Ongoing strategic monitoring and analyst access.</p></div>
       </div>
     </div>
   </section>
+
 </BaseLayout>
