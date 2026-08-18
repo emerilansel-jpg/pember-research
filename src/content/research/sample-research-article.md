@@ -8,6 +8,7 @@ tags:
   - "analysis"
   - "market intelligence"
 description: "A placeholder article demonstrating the content schema and publishing workflow."
+featured_image: "/images/hero-default.svg"
 ---
 
 ## Overview

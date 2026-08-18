@@ -1,10 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('research');
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 6);
+
+const pressLogos = [
+  { name: 'Financial Times', file: 'financial-times.svg' },
+  { name: 'Bloomberg', file: 'bloomberg.svg' },
+  { name: 'Wall Street Journal', file: 'wsj.svg' },
+  { name: 'Reuters', file: 'reuters.svg' },
+  { name: 'The Economist', file: 'economist.svg' },
+  { name: 'TechCrunch', file: 'techcrunch.svg' },
+];
 ---
 
 <BaseLayout title="Pember Research — Intelligence that moves markets." description="Independent research across logistics technology, procurement intelligence, trade finance, and supply chain risk — from nearshoring trends to autonomous freight." pageType="homepage">
@@ -26,6 +36,20 @@ const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueO
       </div>
     </div>
   </section>
+
+  <!-- ═══ PRESS STRIP ═══ -->
+  <div class="press-strip">
+    <div class="container">
+      <p class="press-label">As featured in</p>
+      <div class="press-logos">
+        {pressLogos.map(logo => (
+          <a href={`https://www.${logo.name.toLowerCase().replace(/ /g, '')}.com`} target="_blank" rel="noopener" class="press-logo-link">
+            <img src={`/logos/${logo.file}`} alt={logo.name} class="press-logo-img" loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
 
   <!-- ═══ SIGNAL BAR ═══ -->
   <div class="signal-bar">
@@ -223,6 +247,22 @@ const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueO
         <div class="service-card"><h3>Due Diligence</h3><p>Technical and commercial assessment for M&A decisions.</p></div>
         <div class="service-card"><h3>Custom Research</h3><p>Bespoke programs tailored to your strategic questions.</p></div>
         <div class="service-card"><h3>Advisory Retainers</h3><p>Ongoing strategic monitoring and analyst access.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NEWSLETTER ═══ -->
+  <section class="section section--dark">
+    <div class="container newsletter-section">
+      <div class="newsletter-section__content">
+        <h2>Get the <span class="gradient-text">Supply Chain Briefing</span></h2>
+        <p>Weekly research digest with key findings, market signals, and analysis — delivered to your inbox.</p>
+        <div class="newsletter-section__proof">
+          <span>2,400+ subscribers</span><span>82% open rate</span><span>Free forever</span>
+        </div>
+      </div>
+      <div class="newsletter-section__form">
+        <NewsletterSignup />
       </div>
     </div>
   </section>
